@@ -1,7 +1,10 @@
 {
   "main": "./src/main.ts",
   "dependencies": {
-    "@nativescript/core": "file:../../node_modules/@nativescript/core"
+    "@nativescript/core": "file:../../node_modules/@nativescript/core",
+    "@nativescript/simple": "file:../../dist/packages/simple",
+    "@nativescript/input-textfield": "file:../../dist/packages/input-textfield",
+    "@nativescript/mytest": "file:../../dist/packages/mytest"
   },
   "devDependencies": {
     "@nativescript/android": "~8.2.0",

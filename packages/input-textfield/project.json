@@ -1,0 +1,72 @@
+{
+  "root": "packages/input-textfield",
+  "projectType": "library",
+  "sourceRoot": "packages/input-textfield",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/input-textfield",
+        "tsConfig": "packages/input-textfield/tsconfig.json",
+        "packageJson": "packages/input-textfield/package.json",
+        "main": "packages/input-textfield/index.d.ts",
+        "assets": [
+          "packages/input-textfield/*.md",
+          "packages/input-textfield/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/input-textfield/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "node tools/scripts/build-finish.ts input-textfield"
+        ],
+        "parallel": false
+      },
+      "outputs": [
+        "dist/packages/input-textfield"
+      ],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "nx g @nativescript/plugin-tools:focus-packages input-textfield"
+        ],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/input-textfield/**/*.ts"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

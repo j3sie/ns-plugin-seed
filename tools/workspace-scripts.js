@@ -63,7 +63,35 @@ module.exports = {
     // packages
     // build output is always in dist/packages
     '@nativescript': {
-      'build-all': {
+      // @nativescript/simple
+			'simple': {
+				build: {
+					script: 'nx run simple:build.all',
+					description: '@nativescript/simple: Build',
+				},
+			},
+			// @nativescript/mytest
+			'mytest': {
+				build: {
+					script: 'nx run mytest:build.all',
+					description: '@nativescript/mytest: Build',
+				},
+			},
+			// @nativescript/others
+			'others': {
+				build: {
+					script: 'nx run others:build.all',
+					description: '@nativescript/others: Build',
+				},
+			},
+			// @nativescript/input-textfield
+			'input-textfield': {
+				build: {
+					script: 'nx run input-textfield:build.all',
+					description: '@nativescript/input-textfield: Build',
+				},
+			},
+			'build-all': {
         script: 'nx run-many --target=build.all --all',
         description: 'Build all packages',
       },
@@ -73,7 +101,23 @@ module.exports = {
       description: '_____________  Focus (VS Code supported)  _____________',
     },
     focus: {
-      reset: {
+      'simple': {
+				script: 'nx run simple:focus',
+				description: 'Focus on @nativescript/simple',
+			},
+			'mytest': {
+				script: 'nx run mytest:focus',
+				description: 'Focus on @nativescript/mytest',
+			},
+			'others': {
+				script: 'nx run others:focus',
+				description: 'Focus on @nativescript/others',
+			},
+			'input-textfield': {
+				script: 'nx run input-textfield:focus',
+				description: 'Focus on @nativescript/input-textfield',
+			},
+			reset: {
         script: 'nx g @nativescript/plugin-tools:focus-packages',
         description: 'Reset Focus',
       },
